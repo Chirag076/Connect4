@@ -38,6 +38,7 @@ export default function App() {
 
     socket.onmessage = (e) => {
       const data = JSON.parse(e.data);
+      setJoining(false);
 
       if (data.type === "waiting") setMessage("Waiting...");
 
