@@ -309,6 +309,7 @@ function handleReconnect(ws,name){
       if(p.name===name){
         p.ws=ws;
         ws.game=game;
+        ws.disconnected = false;
         ws.send(JSON.stringify({
           type:"reconnected",
           board:game.board,

@@ -14,12 +14,18 @@ export default function App() {
   const [message, setMessage] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
+  const [joining, setJoining] = useState(false);
+  const [connecting, setConnecting] = useState(false);
 
   const connectWS = () => {
-    socket = new WebSocket("ws://localhost:3000");
+    if (connecting) return;
+    setConnecting(true);
+    socket = new WebSocket("https://connect4-5luc.onrender.com");
 
     socket.onopen = () => {
       setConnected(true);
+      setConnecting(false);
+      setJoining(false);
       if (name) {
         socket.send(
           JSON.stringify({
@@ -32,6 +38,7 @@ export default function App() {
 
     socket.onmessage = (e) => {
       const data = JSON.parse(e.data);
+      setJoining(false);
 
       if (data.type === "waiting") setMessage("Waiting...");
 
@@ -78,18 +85,27 @@ export default function App() {
   };
 
   const joinGame = () => {
-    if (!socket || socket.readyState !== WebSocket.OPEN) return;
+    if (joining) return;
 
-    socket.send(
-      JSON.stringify({
-        type: "join",
-        name,
-      })
-    );
+    if (!socket || socket.readyState === WebSocket.CONNECTING) {
+      setJoining(true);
+      return;
+    }
+
+    if (socket.readyState === WebSocket.OPEN) {
+      setJoining(true);
+
+      socket.send(
+        JSON.stringify({
+          type: "join",
+          name,
+        })
+      );
+    }
   };
 
   function loadHistory() {
-    fetch("http://localhost:3000/history")
+    fetch("https://connect4-5luc.onrender.com/history")
       .then((r) => r.json())
       .then((data) => {
         setHistory(data || []);
@@ -97,7 +113,7 @@ export default function App() {
   }
 
   async function loadLeaderboard() {
-    const res = await fetch("http://localhost:3000/leaderboard");
+    const res = await fetch("https://connect4-5luc.onrender.com/leaderboard");
     const data = await res.json();
     setLeaderboard(data);
   }
@@ -119,15 +135,17 @@ export default function App() {
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
           />
-          <button onClick={connectWS}>Connect</button>
+          <button onClick={connectWS} disabled={connecting}>
+            {connecting ? "Connecting..." : "Connect"}
+          </button>
         </>
       )}
 
       {/* GAME SECTION */}
       {connected && (
         <>
-          <button disabled={!connected} onClick={joinGame}>
-            Join Game
+          <button disabled={!connected || joining} onClick={joinGame}>
+            {joining ? "Joining..." : "Join Game"}
           </button>
           {connected && (
             <button
@@ -135,6 +153,7 @@ export default function App() {
               onClick={() => {
                 socket.send(JSON.stringify({ type: "reset" }));
                 setGameOver(false);
+                setJoining(false);
                 setBoard(Array.from({ length: 6 }, () => Array(7).fill(0)));
                 setMyRole(null);
                 setTurn(null);
