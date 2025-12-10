@@ -6,9 +6,7 @@ const DBURI = process.env.DATABASE_URL
 
 export const db = new Pool({
   connectionString: DBURI,
-  ssl: { rejectUnauthorized: false },
-  host: "db.hnxszuekbzvrzxyqtmln.supabase.co",
-  port: 5432
+  ssl: { rejectUnauthorized: false }
 })
 
 db.connect()
