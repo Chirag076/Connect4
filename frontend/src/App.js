@@ -16,7 +16,7 @@ export default function App() {
   const [leaderboard, setLeaderboard] = useState([]);
 
   const connectWS = () => {
-    socket = new WebSocket("ws://localhost:3000");
+    socket = new WebSocket("https://connect4-5luc.onrender.com");
 
     socket.onopen = () => {
       setConnected(true);
@@ -89,7 +89,7 @@ export default function App() {
   };
 
   function loadHistory() {
-    fetch("http://localhost:3000/history")
+    fetch("https://connect4-5luc.onrender.com/history")
       .then((r) => r.json())
       .then((data) => {
         setHistory(data || []);
@@ -97,7 +97,7 @@ export default function App() {
   }
 
   async function loadLeaderboard() {
-    const res = await fetch("http://localhost:3000/leaderboard");
+    const res = await fetch("https://connect4-5luc.onrender.com/leaderboard");
     const data = await res.json();
     setLeaderboard(data);
   }
