@@ -1,6 +1,6 @@
 
 
-# 🎮 Connect 4 – Real-Time Multiplayer Game
+# Connect 4 – Real-Time Multiplayer Game
 
 ### *Backend Internship Assignment – Emitrr*
 
@@ -10,9 +10,9 @@ This project also includes **Kafka analytics (bonus)** for event streaming.
 
 ---
 
-## 🚀 Features
+## Features
 
-### 🎯 Core Features
+### Core Features
 
 ✔ Real-time multiplayer (WebSockets)
 ✔ Automatic matchmaking
@@ -25,14 +25,14 @@ This project also includes **Kafka analytics (bonus)** for event streaming.
 ✔ Persistent storage
 ✔ Clean and simple React UI
 
-### 🤖 Bot AI Priority
+### Bot AI Priority
 
-1️⃣ Try to win
-2️⃣ Block opponent’s winning move
-3️⃣ Prefer center column
-4️⃣ Choose first available safe move
+1 Try to win
+2️ Block opponent’s winning move
+3 Prefer center column
+4 Choose first available safe move
 
-### 🔁 Reconnect Logic
+### Reconnect Logic
 
 If a player disconnects:
 
@@ -41,7 +41,7 @@ If a player disconnects:
 
 ---
 
-## 🧠 Tech Stack
+## Tech Stack
 
 ### Backend
 
@@ -59,7 +59,7 @@ If a player disconnects:
 
 ---
 
-## 🗂 Database Schema
+## Database Schema
 
 ```sql
 create table leaderboard(
@@ -79,7 +79,7 @@ create table game_history(
 
 ---
 
-## ⚙️ Backend Setup
+## Backend Setup
 
 ```bash
 cd backend
@@ -95,7 +95,7 @@ backend/db.js
 
 ---
 
-## 🖥 Frontend Setup
+## Frontend Setup
 
 ```bash
 cd frontend
@@ -105,15 +105,15 @@ npm start
 
 ---
 
-## 🌍 API Endpoints
+## API Endpoints
 
-### 📌 Leaderboard
+### Leaderboard
 
 ```
 GET /leaderboard
 ```
 
-### 📌 Match History
+### Match History
 
 ```
 GET /history
@@ -121,7 +121,7 @@ GET /history
 
 ---
 
-## 💾 Persistent Storage
+## Persistent Storage
 
 | Data Type     | Stored In      | Purpose             |
 | ------------- | -------------- | ------------------- |
@@ -130,7 +130,7 @@ GET /history
 
 ---
 
-## 🎨 UI Includes
+## UI Includes
 
 * 7×6 Connect-4 board
 * Live turn indicator
@@ -141,7 +141,7 @@ GET /history
 
 ---
 
-## 📦 Folder Structure
+## Folder Structure
 
 ```
 backend/
@@ -156,7 +156,7 @@ frontend/
 
 ---
 
-# 🧩 Bonus: Kafka Analytics (Optional)
+# Bonus: Kafka Analytics (Optional)
 
 This project integrates **Kafka event streaming**:
 
@@ -176,7 +176,7 @@ This project integrates **Kafka event streaming**:
 
 ---
 
-## 👨‍💻 Developed For
+## Developed For
 
 **Emitrr – Backend Engineering Assignment**
 
@@ -184,13 +184,13 @@ This project integrates **Kafka event streaming**:
 
 ---
 
-## 🏗 Deployment & Branch Details
+## Deployment & Branch Details
 
-### 🌐 Live Frontend
+### Live Frontend
 
 The **live hosted version (without Kafka analytics)** is available at:
 
-👉 **[https://connect4-six-olive.vercel.app/](https://connect4-six-olive.vercel.app/)**
+ **[https://connect4-six-olive.vercel.app/](https://connect4-six-olive.vercel.app/)**
 
 This version connects to the backend hosted on Render.
 
@@ -200,25 +200,25 @@ This version connects to the backend hosted on Render.
 
 The backend is deployed on **Render free tier**, which:
 
-* Sleeps when inactive 😴
-* Takes **30–60 seconds to wake up** on first request ⏳
+* Sleeps when inactive 
+* Takes **30–60 seconds to wake up** on first request 
 * After waking, everything works normally
 
 So if you open the Vercel frontend and nothing happens immediately — **wait for ~1 minute** for the backend to resume when u click on connect.
 
 ---
 
-## 🧵 Kafka Integration (Local Only)
+## Kafka Integration (Local Only)
 
 Kafka cannot run on free hosting platforms like Render or Vercel.
 Therefore, **Kafka support is included only in a separate development branch**:
 
-### 🔀 Kafka Branch
+###  Kafka Branch
 
-👉 `feature/kafka-analytics`
+ `feature/kafka-analytics`
 (This branch contains: `kafka.js`, `consumer.js`, and server updates for event streaming.)
 
-### 🧪 Running Kafka Locally
+### Running Kafka Locally
 
 If you want to test Kafka analytics:
 
@@ -250,7 +250,7 @@ These events allow tracking:
 
 ---
 
-## 🔧 Why Kafka Cannot Be Deployed
+## Why Kafka Cannot Be Deployed
 
 Kafka requires:
 
@@ -274,18 +274,18 @@ Therefore:
 
 | Requirement             | Status                 |
 | ----------------------- | ---------------------- |
-| Multiplayer WebSockets  | ✅                      |
-| Bot with strategy       | ✅                      |
-| Reconnect               | ✅                      |
-| Disconnect winner logic | ✅                      |
-| Persistent database     | ✅                      |
-| Leaderboard             | ✅                      |
-| Match history           | ✅                      |
-| Simple React frontend   | ✅                      |
-| Kafka bonus             | ⚡ Optional – Completed |
+| Multiplayer WebSockets  | Done                   |
+| Bot with strategy       | Done                   |
+| Reconnect               | Done                   |
+| Disconnect winner logic | Done                   |
+| Persistent database     | Done                   |
+| Leaderboard             | Done                   |
+| Match history           | Done                   |
+| Simple React frontend   | Done                   |
+| Kafka bonus             | Done                   |
 
 ---
 
-## ✨ Author
+## Author
 
 **Chirag Chhabra**
