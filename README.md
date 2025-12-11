@@ -180,7 +180,95 @@ This project integrates **Kafka event streaming**:
 
 **Emitrr – Backend Engineering Assignment**
 
+
+
 ---
+
+## 🏗 Deployment & Branch Details
+
+### 🌐 Live Frontend
+
+The **live hosted version (without Kafka analytics)** is available at:
+
+👉 **[https://connect4-six-olive.vercel.app/](https://connect4-six-olive.vercel.app/)**
+
+This version connects to the backend hosted on Render.
+
+---
+
+## 🛠 Backend Hosting (Render Notice)
+
+The backend is deployed on **Render free tier**, which:
+
+* Sleeps when inactive 😴
+* Takes **30–60 seconds to wake up** on first request ⏳
+* After waking, everything works normally
+
+So if you open the Vercel frontend and nothing happens immediately — **wait for ~1 minute** for the backend to resume when u click on connect.
+
+---
+
+## 🧵 Kafka Integration (Local Only)
+
+Kafka cannot run on free hosting platforms like Render or Vercel.
+Therefore, **Kafka support is included only in a separate development branch**:
+
+### 🔀 Kafka Branch
+
+👉 `c01cahnges`
+(This branch contains: `kafka.js`, `consumer.js`, and server updates for event streaming.)
+
+### 🧪 Running Kafka Locally
+
+If you want to test Kafka analytics:
+
+```bash
+cd backend
+docker compose up -d
+```
+
+Then start:
+
+```bash
+node server.js       # backend with Kafka producers
+node consumer.js     # Kafka analytics consumer
+```
+
+Kafka events tracked locally:
+
+* `game_started`
+* `move_played`
+* `game_ended`
+* `disconnect`
+
+These events allow tracking:
+
+* Average game duration
+* Most frequent winners
+* Games per hour/day
+* User-specific performance metrics
+
+---
+
+## 🔧 Why Kafka Cannot Be Deployed
+
+Kafka requires:
+
+* Persistent storage volumes
+* Multiple communication ports
+* Zookeeper
+* Long-running processes
+
+Platforms like **Render Free**, **Vercel**, **Netlify**, **Railway Free Tier** do **not** support Kafka brokers or zookeeper containers.
+
+Therefore:
+
+✔ Core game works perfectly online
+✔ Kafka analytics works **only locally**
+✔ Kafka code is safely maintained in the **c01cahnges** branch
+
+---
+
 
 ## ✔ Completed Requirements
 
