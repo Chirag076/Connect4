@@ -215,7 +215,7 @@ Therefore, **Kafka support is included only in a separate development branch**:
 
 ### 🔀 Kafka Branch
 
-👉 `c01cahnges`
+👉 `feature/kafka-analytics`
 (This branch contains: `kafka.js`, `consumer.js`, and server updates for event streaming.)
 
 ### 🧪 Running Kafka Locally
@@ -265,7 +265,7 @@ Therefore:
 
 ✔ Core game works perfectly online
 ✔ Kafka analytics works **only locally**
-✔ Kafka code is safely maintained in the **c01cahnges** branch
+✔ Kafka code is safely maintained in the **feature/kafka-analytics** branch
 
 ---
 
