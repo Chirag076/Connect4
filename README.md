@@ -137,7 +137,6 @@ GET /history
 * Match messages
 * Leaderboard table
 * Match history table
-* Smooth disc animations
 
 ---
 
