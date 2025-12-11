@@ -20,7 +20,7 @@ export default function App() {
   const connectWS = () => {
     if (connecting) return;
     setConnecting(true);
-    socket = new WebSocket("https://connect4-5luc.onrender.com");
+    socket = new WebSocket("http://localhost:3000");
 
     socket.onopen = () => {
       setConnected(true);
@@ -105,7 +105,7 @@ export default function App() {
   };
 
   function loadHistory() {
-    fetch("https://connect4-5luc.onrender.com/history")
+    fetch("http://localhost:3000/history")
       .then((r) => r.json())
       .then((data) => {
         setHistory(data || []);
@@ -113,7 +113,7 @@ export default function App() {
   }
 
   async function loadLeaderboard() {
-    const res = await fetch("https://connect4-5luc.onrender.com/leaderboard");
+    const res = await fetch("http://localhost:3000/leaderboard");
     const data = await res.json();
     setLeaderboard(data);
   }
